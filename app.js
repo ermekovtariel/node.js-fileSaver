@@ -15,13 +15,11 @@ async function start() {
     await mongoose.connect(config.get('mongoURI'), {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      // useCreateIndex: true,
     });
     app.listen(PORT, () => console.log(`app has started ${PORT}`));
   } catch (e) {
     console.log('server Error', e.message);
     process.exit(1);
   }
-  // app.listen(PORT, () => console.log(`App=>${PORT}`));
 }
 start();

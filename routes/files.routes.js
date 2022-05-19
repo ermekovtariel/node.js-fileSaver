@@ -47,7 +47,6 @@ router.put('/:filename', upload.single(`image`), async (req, res) => {
   process.stdout.write('Окончание сохранения файла' + '\n');
   try {
   } catch (error) {
-    console.log('no');
     res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' });
   }
 });
@@ -55,7 +54,7 @@ router.put('/:filename', upload.single(`image`), async (req, res) => {
 //! /files/:filename GET
 router.get('/:filename', async (req, res) => {
   try {
-    const data = await File.findOne({ filename: req.params.filename }).select();
+    const data = await File.findOne({ filename: req.params.filename });
     res.json(data);
   } catch (e) {
     res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' });
